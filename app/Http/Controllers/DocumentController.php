@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
-use Smalot\PdfParser\Parser; // Add this import
+use App\Http\Controllers\Controller;
 use App\Models\Document;
 use App\Models\Mcq;
 use App\Models\Result;
 use App\Models\UploadLog;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+use Smalot\PdfParser\Parser; // Add this import
 
 class DocumentController extends Controller
 {
@@ -141,6 +142,12 @@ class DocumentController extends Controller
             $prompt = "Generate exactly 10 multiple choice questions based on: \n\n" . mb_substr($cleanText, 0, 3500) . 
                       "\n\nReturn ONLY a JSON array of objects with keys: question, option_a, option_b, option_c, option_d, answer (A, B, C, or D).";
 
+//             Why this is necessary: PDFs are notorious for using strange font encodings. When pdfparser extracts text, it often pulls out hidden "ghost" characters, invalid byte sequences, or malformed UTF-8 characters.
+
+        // If you pass malformed text into a json_encode() function or send it over an HTTP API (like OpenAI), the JSON encoder will completely break and return false or crash.
+
+        // This line forces PHP to look at the text, strip out or repair any corrupted bytes, and ensure it is strictly, cleanly formatted UTF-8. It acts as a safety shield before you send the text to OpenAI
+
             $response = Http::withToken(config('services.openai.key'))
                 ->timeout(30)
                 ->post('https://api.openai.com/v1/chat/completions', [
@@ -158,15 +165,34 @@ class DocumentController extends Controller
             }
 
             $apiResult = $response->json();
-            file_put_contents(storage_path('app/uploads/api_response.json'), json_encode($apiResult, JSON_PRETTY_PRINT));
+
+            // ADD THIS LINE HERE TO LOG THE ENTIRE RESPONSE
+            Log::info('OpenAI Response Data:', ['result' => $apiResult]);
+
+            // dump($apiResult); // For debugging purposes, you can remove this in production
+
+            // file_put_contents(storage_path('app/uploads/api_response.json'), json_encode($apiResult, JSON_PRETTY_PRINT));
             $jsonContent = $apiResult['choices'][0]['message']['content'] ?? null;
+
+            // dump($jsonContent); // For debugging purposes, you can remove this in production
+            
+            Log::info('OpenAI Response Data:', ['jsonContent' => $jsonContent]);
 
             if (!$jsonContent) {
                 throw new \Exception("AI failed to generate content. Please try again.");
             }
 
             $content = json_decode($jsonContent, true);
+            
+            Log::info('OpenAI Response Data:', ['content' => $content]);
+
+            // dump($content); // For debugging purposes, you can remove this in production
+
             $mcqs = $content['questions'] ?? $content;
+
+            Log::info('OpenAI Response Data:', ['mcqs' => $mcqs]);
+
+            // dump($mcqs); // For debugging purposes, you can remove this in production
 
             if (!is_array($mcqs) || empty($mcqs)) {
                 throw new \Exception("AI returned empty or invalid question set.");
