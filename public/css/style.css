@@ -1,0 +1,428 @@
+/* ==========================================================
+   GLOBAL STYLING — Shared across all pages
+   ========================================================== */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================
+   RESPONSIVENESS (check!!)
+   ========================================================== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dashboard, 
+    .aboutus, 
+    .contact_us, 
+    .ourfacility,
+    .ourlocation, 
+    .login-header, 
+    .register-header {
+        margin-left: 0;
+    }
+
+    .href {
+        justify-content: center;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .contact-info {
+        text-align: center;
+    }
+    
+    .facility-layout img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+/* ==========================================================
+   NAVIGATION LINKS
+   ========================================================== */
+.href {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.href a {
+    text-decoration: none;
+    color: #ffd700;
+    font-weight: 600;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.href a:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.href hr {
+    width: 100%;
+    border: 0.5px solid #444;
+    margin-top: 10px;
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+footer {
+    text-align: center;
+    background-color: #1b1f3a;
+    color: white;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+footer hr {
+    width: 80%;
+    margin: 0 auto 10px auto;
+    border: 0.5px solid #444;
+}
+
+/* ==========================================================
+   MAIN SECTION — LOGIN
+   ========================================================== */
+.login-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 40px;
+    margin: 60px auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #1b1f3a;
+    font-size: 26px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form label {
+    font-weight: bold;
+    text-align: left;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.login-form input[type="submit"],
+.login-form input[type="reset"] {
+    background-color: #1b1f3a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.login-form input[type="submit"]:hover,
+.login-form input[type="reset"]:hover {
+    background-color: #ffd700;
+    color: #1b1f3a;
+    transform: scale(1.05);
+}
+
+.login-form p {
+    margin-top: 10px;
+}
+
+.login-form a {
+    color: #1b1f3a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    color: #ffd700;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+
+
+/* ==========================================================
+   MAIN SECTION — REGISTER
+   ========================================================== */
+.register-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 40px;
+    margin: 60px auto;
+    max-width: 450px;
+    text-align: center;
+}
+
+.register-container h2 {
+    color: #1b1f3a;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.register-form label {
+    font-weight: bold;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="tel"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.register-form input[type="submit"],
+.register-form input[type="reset"] {
+    background-color: #1b1f3a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.register-form input[type="submit"]:hover,
+.register-form input[type="reset"]:hover {
+    background-color: #ffd700;
+    color: #1b1f3a;
+    transform: scale(1.05);
+}
+
+.register-form a {
+    color: #1b1f3a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register-form a:hover {
+    color: #ffd700;
+}
+
+.register-form .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+
+
+.register-container p {
+    text-align: center;
+}
+
+/* ==========================================================
+   RESET PASSWORD 
+   ========================================================== */
+.auth-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 40px;
+    margin: 60px auto;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.auth-container h2 {
+    margin-bottom: 20px;
+    color: #1b1f3a;
+    font-size: 26px;
+}
+
+/* ==========================================================
+   FORM ELEMENTS
+   ========================================================== */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.auth-form label {
+    font-weight: bold;
+    color: #1b1f3a;
+}
+
+.auth-form input[type="email"],
+.auth-form input[type="text"],
+.auth-form input[type="password"],
+.auth-form input[type="tel"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.auth-form input[type="submit"],
+.auth-form .btn-primary {
+    background-color: #1b1f3a;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.3s;
+    text-align: center;
+}
+
+.auth-form input[type="submit"]:hover {
+    background-color: #ffd700;
+    color: #1b1f3a;
+    transform: scale(1.05);
+}
+
+/* Helper Classes */
+.message-box {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #eef2ff;
+    color: #1b1f3a;
+    border-left: 5px solid #ffd700;
+    font-size: 14px;
+}
+
+.start-over {
+    display: inline-block;
+    margin-top: 15px;
+    color: #e74c3c;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.start-over:hover { text-decoration: underline; }
+
+
+/* ==========================================================
+   MANAGE PROFILE
+   ========================================================== */
+
+
+.manage-profile,
+.edit-profile {
+  max-width: 600px;
+  margin: auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.profile-info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.edit-profile form div {
+  margin-bottom: 15px;
+}
+
+.edit-profile label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.edit-profile input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-edit {
+    padding: 10px 25px;
+    background-color: #1b1f3a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-edit:hover {
+    background-color: #ffd700;
+    color: #1b1f3a;
+}
+
+
+
+

@@ -1,0 +1,238 @@
+/* ==========================================================
+   GLOBAL STYLING — Shared across all pages
+   ========================================================== */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.view-container{
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin: 40px auto;
+    width: 95%;
+    max-width: 800px;
+    min-height: 500px;
+}
+
+.view-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #1b1f3a;
+    padding-bottom: 15px;
+}
+
+.view-header h2 { 
+    color: #1b1f3a; 
+    font-size: 28px; 
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+footer {
+    text-align: center;
+    background-color: #1b1f3a;
+    color: white;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+footer hr {
+    width: 80%;
+    margin: 0 auto 10px auto;
+    border: 0.5px solid #444;
+}
+
+.btn-edit {
+    padding: 10px 25px;
+    background-color: #1b1f3a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+.btn-edit:hover {
+    background-color: #ffd700;
+    color: #1b1f3a;
+}
+
+
+
+
+
+/* ==========================================================
+   VIEW / SELECT 
+   ========================================================== */
+
+.search-section{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.search-section input[type="search"]{
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.search-section button{
+    background-color: #1b1f3a;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+
+.search-section button:hover { background-color: #ffd700; color: #1b1f3a; }
+
+
+/* DOCUMENT CARDS (Column Layout) */
+
+.doc-card{
+    border: 1px solid #1b1f3a;
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-left: 6px solid #1b1f3a;
+
+    /* Key Change: Direction is now Column */
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: 0.2s;
+}
+
+
+.doc-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+.doc-info h3 {
+    color: #1b1f3a;
+    margin-bottom: 5px;
+}
+
+.doc-info span {
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* ACTIONS (At the bottom of the card) */
+.actions-group{
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee ;
+    flex-wrap: wrap;
+}
+
+.btn-quiz {
+    text-decoration: none;
+    background-color: #1b1f3a;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-quiz:hover { background-color: #ffd700; color: #1b1f3a; }
+
+.rename-box {
+    display: flex;
+    gap: 5px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.rename-box input {
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    flex: 1;
+}
+
+.btn-delete {
+    background: none;
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+    padding: 6px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-delete:hover { 
+    background: #e74c3c; 
+    color: white; 
+}
+
+.btn-upload-new {
+    background-color: #ffd700; 
+    color: #1b1f3a; 
+    text-decoration: none;
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    font-weight: bold;
+}
+
+/* NO DOCUMENTS STATE */
+.no-docs {
+    text-align: center;
+    padding: 60px 20px;
+    color: #777;
+    background: #fafafa;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+}
+
+.no-docs p {
+    font-size: 1.1rem; 
+    margin-bottom: 15px;
+}
+
+/* ==========================================================
+   UPLOAD DOC
+   ========================================================== */
+
+
+
+
+
