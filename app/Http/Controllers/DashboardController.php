@@ -53,7 +53,9 @@ class DashboardController extends Controller
 
         $document = Document::where('user_id', $userId) -> get();
         // $totaldoc = $document -> count();
-        $totaldoc = Document::where('user_id', $userId)->count();
+        $totaldoc = Document::where('user_id', $userId)
+                    -> where ('status', 'active')
+                    ->count();
 
         // dd($totaldoc);
 

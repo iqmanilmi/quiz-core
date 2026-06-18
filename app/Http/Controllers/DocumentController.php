@@ -11,9 +11,10 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Smalot\PdfParser\Parser; // Add this import
+use stdClass;
 
 class DocumentController extends Controller
 {
@@ -60,6 +61,21 @@ class DocumentController extends Controller
     {
         // it will see what is in the request and it will see if there is a file or not
         // dd($request);
+
+        $limit = UploadLog::where('user_id', auth()->id())
+                ->where('upload_date', Carbon::today()->toDateString())
+                ->first();
+
+        // $limit = new stdClass();
+        // $limit->total_upload = 5;
+            
+        
+        
+
+        if ($limit && $limit->total_upload >= 5) {
+            echo "<script>alert('Upload limit reached for today. Please try again tomorrow.'); window.location.href='" . url()->previous() . "';</script>";
+            exit;
+        }
 
         // 1. Validate that a file is uploaded
         $request->validate([
