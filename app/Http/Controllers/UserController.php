@@ -302,6 +302,14 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
+        $user = User::where('email', $formFields['email'])
+        -> where('status', 'active')
+        -> first();
+
+        if (!$user) {
+            return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+        }
+
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
